@@ -1,0 +1,30 @@
+# Don't serve a browsable index of any directory that lacks an index file
+Options -Indexes
+
+DirectoryIndex index.html
+AddDefaultCharset UTF-8
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # ——— Force HTTPS ————————————————————————————————————————————————
+  # Both conditions are needed: X-Forwarded-Proto covers hosts that terminate
+  # TLS at a load balancer, where %{HTTPS} alone would cause a redirect loop.
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+</IfModule>
+
+# ——— Security headers ————————————————————————————————————————————————
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'self'; object-src 'none'"
+</IfModule>
+
+# Never serve the raw log/config files if any end up here
+<FilesMatch "\.(env|ini|log|sh|sql|bak)$">
+  Require all denied
+</FilesMatch>
