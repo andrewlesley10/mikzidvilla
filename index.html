@@ -72,6 +72,7 @@
       <a href="#spaces">Spaces</a>
       <a href="#tours">Video tours</a>
       <a href="#good-for">Good for</a>
+      <a href="#gallery">Gallery</a>
       <a href="#enquire">Contact</a>
       <a class="btn btn-primary" href="#enquire">Check Your Dates</a>
     </nav>
@@ -188,6 +189,30 @@
   </div>
 </section>
 
+<section class="section section--alt" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Gallery</span>
+      <h2>More of the villa</h2>
+      <p class="lead">From the street gate to the courtyard garden. Tap a photo to see it larger.</p>
+    </div>
+    <div class="gallery" data-gallery>
+      <a class="gallery__item" href="media/villa-night.jpg"><img src="media/villa-night.jpg" alt="The villa lit up at night, seen from the garden path" loading="lazy" width="1000" height="1334"/><span>The villa after dark</span></a>
+      <a class="gallery__item" href="media/gate-lanterns.jpg"><img src="media/gate-lanterns.jpg" alt="Lanterns hanging over the gateway at night, with the lit garden beyond" loading="lazy" width="1000" height="1334"/><span>Lanterns over the gateway</span></a>
+      <a class="gallery__item" href="media/gate-street.jpg"><img src="media/gate-street.jpg" alt="The villa's gate from the street in daylight" loading="lazy" width="1000" height="1334"/><span>The gate from the street</span></a>
+      <a class="gallery__item" href="media/courtyard.jpg"><img src="media/courtyard.jpg" alt="Paved courtyard with a young mango tree and a green door" loading="lazy" width="960" height="1184"/><span>Courtyard garden</span></a>
+      <a class="gallery__item" href="media/veranda.jpg"><img src="media/veranda.jpg" alt="Wicker chairs and a glass table under a lantern-style ceiling light" loading="lazy" width="1000" height="1334"/><span>Wicker seating area</span></a>
+      <a class="gallery__item" href="media/bbq.jpg"><img src="media/bbq.jpg" alt="Gas BBQ grill beside the kitchen counters" loading="lazy" width="960" height="1280"/><span>Gas BBQ grill</span></a>
+      <a class="gallery__item" href="media/kitchen-side.jpg"><img src="media/kitchen-side.jpg" alt="Kitchen with timber cabinets, cooker and oven" loading="lazy" width="960" height="1280"/><span>Kitchen and cooker</span></a>
+      <a class="gallery__item" href="media/hallway.jpg"><img src="media/hallway.jpg" alt="Marble-floored lounge with a glass wall looking into the games room" loading="lazy" width="900" height="1600"/><span>Lounge and games room</span></a>
+      <a class="gallery__item" href="media/glass-wall.jpg"><img src="media/glass-wall.jpg" alt="Glass wall between the hallway and the games room, under a chandelier" loading="lazy" width="900" height="1600"/><span>Glass wall to the games room</span></a>
+      <a class="gallery__item" href="media/stairs-view.jpg"><img src="media/stairs-view.jpg" alt="View from the staircase down to the glass-walled games room" loading="lazy" width="900" height="1600"/><span>View from the stairs</span></a>
+      <a class="gallery__item" href="media/wardrobe.jpg"><img src="media/wardrobe.jpg" alt="Bedroom with a tall timber wardrobe and yellow curtains" loading="lazy" width="1000" height="1334"/><span>Bedroom wardrobe</span></a>
+      <a class="gallery__item" href="media/speaker.jpg"><img src="media/speaker.jpg" alt="Large portable party speaker" loading="lazy" width="800" height="1066"/><span>Party speaker for music</span></a>
+    </div>
+  </div>
+</section>
+
 <section class="section enquire" id="enquire">
   <img class="enquire__bg" src="media/entrance-night.jpg" alt="" loading="lazy"/>
   <div class="wrap split">
@@ -298,6 +323,7 @@
         <li><a href="#spaces">Spaces</a></li>
         <li><a href="#tours">Video tours</a></li>
         <li><a href="#good-for">Good for</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#enquire">Check your dates</a></li>
       </ul>
     </div>
@@ -321,6 +347,15 @@
 <a class="fab is-hidden" href="https://wa.me/94777327993" target="_blank" rel="noopener" aria-label="WhatsApp Mik Zid Villa">
   <svg aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>WhatsApp
 </a>
+<dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
+  <figure class="lightbox__figure">
+    <img class="lightbox__img" src="" alt=""/>
+    <figcaption><span class="lightbox__caption"></span><span class="lightbox__count"></span></figcaption>
+  </figure>
+  <button class="lightbox__btn lightbox__close" type="button" aria-label="Close photo">&times;</button>
+  <button class="lightbox__btn lightbox__prev" type="button" aria-label="Previous photo"><svg aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></button>
+  <button class="lightbox__btn lightbox__next" type="button" aria-label="Next photo"><svg aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></button>
+</dialog>
 <nav class="quickbar" aria-label="Quick contact">
   <a href="tel:+94777327993">Call</a>
   <a href="https://wa.me/94777327993" target="_blank" rel="noopener">WhatsApp</a>

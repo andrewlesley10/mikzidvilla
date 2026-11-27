@@ -84,7 +84,7 @@
 
   /* ---------- scroll reveal ---------- */
   var revealTargets = document.querySelectorAll(
-    'main .section-head, main .pair figure, main .space, main .reel, main .uses > div, main .form-card'
+    'main .section-head, main .pair figure, main .space, main .reel, main .uses > div, main .gallery__item, main .form-card'
   );
   if (hasIO && !prefersReduced) {
     var rio = new IntersectionObserver(function (entries) {
@@ -100,6 +100,53 @@
       el.style.transitionDelay = Math.min(sib, 5) * 60 + 'ms';
       rio.observe(el);
     });
+  }
+
+  /* ---------- gallery lightbox ----------
+     Tiles are plain links to the photos; where <dialog> is supported they
+     open in the viewer instead. Arrow keys and swipes move between photos. */
+  var gallery = document.querySelector('[data-gallery]');
+  var box = document.getElementById('lightbox');
+  if (gallery && box && typeof box.showModal === 'function') {
+    var items = Array.prototype.slice.call(gallery.querySelectorAll('.gallery__item'));
+    var boxImg = box.querySelector('.lightbox__img');
+    var boxCap = box.querySelector('.lightbox__caption');
+    var boxCount = box.querySelector('.lightbox__count');
+    var current = 0;
+    var showPhoto = function (n) {
+      current = (n + items.length) % items.length;
+      var link = items[current];
+      var thumb = link.querySelector('img');
+      var label = link.querySelector('span');
+      boxImg.src = link.getAttribute('href');
+      boxImg.alt = thumb ? thumb.alt : '';
+      boxCap.textContent = label ? label.textContent : '';
+      boxCount.textContent = (current + 1) + ' / ' + items.length;
+    };
+    gallery.addEventListener('click', function (e) {
+      var link = e.target.closest('.gallery__item');
+      if (!link) return;
+      e.preventDefault();
+      showPhoto(items.indexOf(link));
+      box.showModal();
+    });
+    box.querySelector('.lightbox__prev').addEventListener('click', function () { showPhoto(current - 1); });
+    box.querySelector('.lightbox__next').addEventListener('click', function () { showPhoto(current + 1); });
+    box.querySelector('.lightbox__close').addEventListener('click', function () { box.close(); });
+    box.addEventListener('click', function (e) { if (e.target === box) box.close(); });
+    box.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') showPhoto(current - 1);
+      else if (e.key === 'ArrowRight') showPhoto(current + 1);
+    });
+    var touchX = null;
+    box.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+    box.addEventListener('touchend', function (e) {
+      if (touchX === null) return;
+      var dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 50) showPhoto(current + (dx < 0 ? 1 : -1));
+      touchX = null;
+    });
+    box.addEventListener('close', function () { items[current].focus(); });
   }
 
   /* ---------- footer year ---------- */

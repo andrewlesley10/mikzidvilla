@@ -8,13 +8,13 @@ This is the starter scope: a showcase page with an enquiry form, WhatsApp and ca
 
 | Path | What it is |
 |---|---|
-| `index.html` | The whole site: hero, villa facts, day-to-night photos, spaces, video tours, "Good for" and the enquiry form |
+| `index.html` | The whole site: hero, villa facts, day-to-night photos, spaces, video tours, "Good for", photo gallery and the enquiry form |
 | `contact.php` | Receives the enquiry form and emails it to the villa |
 | `assets/site.css` | All styles, built on the colour and type tokens at the top of the file |
-| `assets/site.js` | Preloader, mobile menu, sticky nav, floating WhatsApp button, scroll reveal |
+| `assets/site.js` | Preloader, mobile menu, sticky nav, floating WhatsApp button, scroll reveal, gallery photo viewer |
 | `assets/enquiry-form.js` | Date checks, sends the form without reloading, shows the thank-you panel |
 | `assets/seo.js` | Adds Google structured data (LodgingBusiness) for the villa |
-| `media/` | Photos, logos and the two tour videos used on the page, plus spare photos for a future gallery |
+| `media/` | Web-sized photos, logos and the two tour videos. Every distinct villa photo is on the page, in the main sections or the gallery |
 | `assets/WhatsApp …` | The owner's original photos and videos. The page doesn't use them, so they can stay out of the upload to the hosting |
 | `.htaccess` | HTTPS redirect, clean URLs, caching and security headers (Apache hosting) |
 | `robots.txt`, `sitemap.xml` | For search engines |
